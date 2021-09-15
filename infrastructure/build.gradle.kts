@@ -13,9 +13,15 @@ dependencies {
     implementation(project(":domain"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.assertj:assertj-core")
+    testImplementation("org.junit.platform:junit-platform-runner")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
