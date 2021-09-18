@@ -1,8 +1,9 @@
 package com.ivangrod.needlehackpost.domain.post
 
-class Post {
+import com.ivangrod.needlehackpost.domain.shared.AggregateId
+import com.ivangrod.needlehackpost.domain.shared.AggregateRoot
 
-    fun link(): String {
-        return "http://www.google.com"
-    }
+class Post(private val postId: PostId, val title: String, val uri: String) : AggregateRoot() {
+
+    override fun id(): AggregateId? = postId
 }
