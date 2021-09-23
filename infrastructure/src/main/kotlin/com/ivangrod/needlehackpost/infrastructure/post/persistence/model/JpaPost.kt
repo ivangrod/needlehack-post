@@ -1,11 +1,46 @@
 package com.ivangrod.needlehackpost.infrastructure.post.persistence.model
 
+import com.ivangrod.needlehackpost.domain.post.*
+import java.time.LocalDateTime
 import java.util.*
+import java.util.stream.Collectors
 import javax.persistence.Entity
 import javax.persistence.Id
 
+
 @Entity
-data class JpaPost(@Id val id: UUID, val title: String, val uri: String)
+class JpaPost(
+    @Id val id: String? = null,
+    val title: String? = null,
+    val uri: String? = null,
+    val creator: String? = null,
+    val source: String? = null
+) {
+
+    fun toDomain(): Post? {
+        return Post.create(
+            PostTitle(title),
+            PostUri(uri),
+            Author(creator),
+            Feed("", ""),
+            PostContent.buildWithContentPlain(""),
+            PostDate(LocalDateTime.now()),
+            emptySet()
+        )
+    }
+
+    companion object {
+        fun fromDomain(post: Post): JpaPost {
+            return JpaPost(
+                post.id.value,
+                post.title.value,
+                post.uri.value,
+                post.creator.value,
+                post.origin.source
+            )
+        }
+    }
+}
 
 /*
 Any property defined within the class body {}, if present, will not be used in the generated equals(), hashCode(),

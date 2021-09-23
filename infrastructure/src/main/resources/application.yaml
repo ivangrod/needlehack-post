@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/needlehack_post
+    username: needlehack_post
+    password: needlehack
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect.storage_engine: innodb
+        event:
+          merge:
+            entity_copy_observer: allow
+        format_sql: false
+        generate_statistics: true
+        globally_quoted_identifiers: true
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: true
+

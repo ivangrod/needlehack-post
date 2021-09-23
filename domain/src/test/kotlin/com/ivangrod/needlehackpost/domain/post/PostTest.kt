@@ -16,7 +16,7 @@ class PostTest {
                 Feed("http://www.google.com", "Google"),
                 PostContent.buildWithContentPlain(""),
                 PostDate(LocalDateTime.now()),
-                emptySet<Topic>()
+                emptySet()
             ).uri
         ).isNotNull
     }

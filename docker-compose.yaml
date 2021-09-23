@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:11.2-alpine
+    container_name: needlehack_postgres
+    restart: always
+    ports:
+      - '127.0.0.1:5432:5432'
+    environment:
+      PGDATA: /var/lib/postgresql/data/needlehack_post
+      POSTGRES_USER: needlehack_post
+      POSTGRES_PASSWORD: needlehack
+      POSTGRES_DB: needlehack_post
