@@ -1,5 +1,3 @@
 package com.ivangrod.needlehackpost.domain.post
 
-interface Posts {
-    fun save(post: Post)
-}
+class Feed(val uri: String, val source: String)

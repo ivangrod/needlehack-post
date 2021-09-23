@@ -2,18 +2,22 @@ package com.ivangrod.needlehackpost.domain.post
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import java.util.*
+import java.time.LocalDateTime
 
 class PostTest {
 
     @Test
     fun should_return_link() {
         assertThat(
-            Post(
-                UUID.fromString("89af1fef-58e8-4b3c-ab01-ee7ee31b7872"),
-                "Google",
-                "http://www.google.com"
+            Post.create(
+                PostTitle("Google"),
+                PostUri("http://www.google.com"),
+                Author("Larry Page"),
+                Feed("http://www.google.com", "Google"),
+                PostContent.buildWithContentPlain(""),
+                PostDate(LocalDateTime.now()),
+                emptySet<Topic>()
             ).uri
-        ).isNotEmpty
+        ).isNotNull
     }
 }

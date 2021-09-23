@@ -1,19 +1,47 @@
 package com.ivangrod.needlehackpost.domain.shared.message
 
-import com.ivangrod.needlehackpost.domain.shared.AggregateId
-import java.time.Instant
+import java.io.Serializable
+import java.time.LocalDateTime
 import java.util.*
 
 
-abstract class DomainEvent : DomainMessage {
-    protected constructor(aggregateId: AggregateId) : super(aggregateId.uuid())
-    protected constructor(aggregateId: UUID, messageId: String, occurredOn: Instant) : super(
-        aggregateId,
-        messageId,
-        occurredOn
-    )
+abstract class DomainEvent {
+    private var aggregateId: String? = null
+    private var eventId: String? = null
+    private var happenedAt: LocalDateTime? = null
 
-    override fun type(): MessageType {
-        return MessageType.EVENT
+    constructor(aggregateId: String?) {
+        this.aggregateId = aggregateId
+        eventId = UUID.randomUUID().toString()
+        happenedAt = LocalDateTime.now()
+    }
+
+    constructor(aggregateId: String?, eventId: String?, happenedAt: LocalDateTime?) {
+        this.aggregateId = aggregateId
+        this.eventId = eventId
+        this.happenedAt = happenedAt
+    }
+
+    protected constructor()
+
+    abstract fun eventName(): String?
+    abstract fun toPrimitives(): Map<String?, Serializable?>?
+    abstract fun fromPrimitives(
+        aggregateId: String?,
+        body: Map<String?, Serializable?>?,
+        eventId: String?,
+        happenedAt: LocalDateTime?
+    ): DomainEvent?
+
+    fun aggregateId(): String? {
+        return aggregateId
+    }
+
+    fun eventId(): String? {
+        return eventId
+    }
+
+    fun happenedAt(): LocalDateTime? {
+        return happenedAt
     }
 }

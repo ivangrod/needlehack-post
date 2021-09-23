@@ -8,8 +8,6 @@ abstract class AggregateRoot {
 
     private var domainEvents: MutableList<DomainEvent> = ArrayList()
 
-    abstract fun id(): AggregateId?
-
     protected fun record(event: DomainEvent) {
         domainEvents.add(event)
     }
@@ -18,16 +16,5 @@ abstract class AggregateRoot {
         val events: List<DomainEvent> = domainEvents
         domainEvents.clear()
         return events
-    }
-
-    override fun hashCode(): Int {
-        return Objects.hash(id())
-    }
-
-    override fun equals(aggregateRoot: Any?): Boolean {
-        if (this === aggregateRoot) {
-            return true
-        }
-        return if (aggregateRoot !is AggregateRoot) false else Objects.equals(id(), aggregateRoot.id())
     }
 }
