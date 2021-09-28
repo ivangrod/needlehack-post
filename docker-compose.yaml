@@ -12,3 +12,5 @@ services:
       POSTGRES_USER: needlehack_post
       POSTGRES_PASSWORD: needlehack
       POSTGRES_DB: needlehack_post
+    volumes:
+      - ./volumes/database/postgresql:/var/lib/postgresql/data/needlehack_post
