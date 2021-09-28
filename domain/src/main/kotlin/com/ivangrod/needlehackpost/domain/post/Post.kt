@@ -38,6 +38,7 @@ class Post private constructor(
     }
 
     companion object {
+
         fun create(
             title: PostTitle, uri: PostUri, creator: Author,
             origin: Feed, content: PostContent, dates: PostDate, topics: Set<Topic>

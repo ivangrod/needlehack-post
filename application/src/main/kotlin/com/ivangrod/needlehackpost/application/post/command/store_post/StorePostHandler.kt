@@ -18,7 +18,13 @@ class StorePostHandler(private val posts: Posts, private val eventBus: EventBus)
                 params.getPublicationDate(),
                 params.getTopics()
             )
-        posts.save(postFromFeed)
-        eventBus.publish(postFromFeed.recordedEvents())
+
+        try {
+            posts.save(postFromFeed)
+            eventBus.publish(postFromFeed.recordedEvents())
+        } catch (exc: Exception) {
+            // TODO Add an useful statement
+        }
+
     }
 }

@@ -16,6 +16,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    implementation("com.rometools:rome-opml:1.11.0")
+    implementation("org.jsoup:jsoup:1.9.2")
+    implementation("org.apache.commons:commons-text:1.9")
+
     runtimeOnly("org.postgresql:postgresql")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")

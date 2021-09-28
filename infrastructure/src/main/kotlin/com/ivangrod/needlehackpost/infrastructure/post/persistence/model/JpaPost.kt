@@ -8,7 +8,7 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 
-@Entity
+@Entity(name = "post")
 class JpaPost(
     @Id val id: String? = null,
     val title: String? = null,
