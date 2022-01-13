@@ -2,9 +2,7 @@ package com.ivangrod.needlehackpost.infrastructure.post.inbound.rest
 
 import com.ivangrod.needlehackpost.application.post.command.store_post.StorePost
 import com.ivangrod.needlehackpost.application.post.command.store_post.StorePostHandler
-import com.ivangrod.needlehackpost.domain.post.Post
 import com.ivangrod.needlehackpost.infrastructure.post.inbound.dto.PostDTO
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController

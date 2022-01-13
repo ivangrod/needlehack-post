@@ -17,7 +17,7 @@ services:
       - ./volumes/database/postgresql:/var/lib/postgresql/data/needlehack_post
       -
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:3-management-alpine # guest:guest
     container_name: 'rabbitmq'
     ports:
       - "5672:5672"

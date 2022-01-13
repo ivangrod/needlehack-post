@@ -6,8 +6,10 @@ logging:
     root: INFO
 
 spring:
+  sql:
+    init:
+      platform: postgres
   datasource:
-    platform: postgres
     url: jdbc:postgresql://localhost:5432/needlehack_post
     username: needlehack_post
     password: needlehack
@@ -27,7 +29,7 @@ spring:
           merge:
             entity_copy_observer: allow
         format_sql: false
-        generate_statistics: true
+        generate_statistics: false
         globally_quoted_identifiers: true
         jdbc:
           batch_size: 1000

@@ -8,7 +8,7 @@ import java.util.function.Consumer
 
 class CollectPostHandler(private val feedExtractor: FeedExtractor, private val eventBus: EventBus) {
 
-    fun execute(params: CollectPost): List<Post?>? {
+    fun execute(params: CollectPost): List<Post?> {
         val feed: Feed = params.createFeed()
         val postsCollected = feedExtractor.extract(feed)
         postsCollected!!.forEach(Consumer { post: Post? -> eventBus.publish(post?.recordedEvents()) })

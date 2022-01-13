@@ -7,9 +7,9 @@ import java.time.LocalDateTime
 
 
 class PostStored : DomainEvent {
-    private val title: String?
-    private val uri: String?
-    private val publishedAt: LocalDateTime?
+    val title: String?
+    val uri: String?
+    val publishedAt: LocalDateTime?
 
     constructor() : super(null) {
         title = null
@@ -25,11 +25,11 @@ class PostStored : DomainEvent {
 
     constructor(
         aggregateId: String?, eventId: String?, happenedAt: LocalDateTime?, title: String?,
-        uri: String?, publicatedAt: LocalDateTime?
+        uri: String?, publishedAt: LocalDateTime?
     ) : super(aggregateId, eventId!!, happenedAt) {
         this.title = title
         this.uri = uri
-        this.publishedAt = publicatedAt
+        this.publishedAt = publishedAt
     }
 
     override fun eventName(): String {
