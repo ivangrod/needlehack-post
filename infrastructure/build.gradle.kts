@@ -15,9 +15,11 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-amqp")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
-    implementation("com.rometools:rome-opml:1.11.0")
-    implementation("org.jsoup:jsoup:1.9.2")
+    implementation("com.rometools:rome-opml:1.17.0")
+    implementation("org.jsoup:jsoup:1.14.3")
     implementation("org.apache.commons:commons-text:1.9")
 
     runtimeOnly("org.postgresql:postgresql")
@@ -25,6 +27,7 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.amqp:spring-rabbit-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.assertj:assertj-core")
     testImplementation("org.junit.platform:junit-platform-runner")

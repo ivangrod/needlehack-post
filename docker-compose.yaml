@@ -1,6 +1,7 @@
 version: '3.7'
 
 services:
+
   db:
     image: postgres:11.2-alpine
     container_name: needlehack_postgres
@@ -14,3 +15,19 @@ services:
       POSTGRES_DB: needlehack_post
     volumes:
       - ./volumes/database/postgresql:/var/lib/postgresql/data/needlehack_post
+      -
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./.docker/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./.docker/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+      - rabbitmq_needlehack_post
+
+networks:
+  rabbitmq_needlehack_post:
+    driver: bridge

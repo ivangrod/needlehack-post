@@ -13,7 +13,7 @@ class JsoupProcessor : ContentProcessor {
         return StringEscapeUtils.unescapeHtml4(
             Jsoup
                 .clean(
-                    contentWithoutProcessing, "", Whitelist.none(),
+                    contentWithoutProcessing?:"", "", Whitelist.none(),
                     Document.OutputSettings().prettyPrint(false)
                 )
         )

@@ -306,3 +306,6 @@ gradle-app.setting
 
 # needlehack
 volumes/
+
+# ### Docker ###
+.docker/
