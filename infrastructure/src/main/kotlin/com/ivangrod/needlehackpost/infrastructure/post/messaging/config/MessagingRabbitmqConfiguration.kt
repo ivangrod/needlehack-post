@@ -2,18 +2,17 @@ package com.ivangrod.needlehackpost.infrastructure.post.messaging.config
 
 import org.springframework.amqp.core.Binding
 import org.springframework.amqp.core.BindingBuilder
+import org.springframework.amqp.core.DirectExchange
 import org.springframework.amqp.core.Queue
-import org.springframework.amqp.core.TopicExchange
 import org.springframework.amqp.rabbit.connection.ConnectionFactory
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 open class MessagingRabbitmqConfiguration {
 
-    val topicExchangeName = "needlehack-post-exchange"
+    val directExchangeName = "needlehack-post-exchange"
 
     val queueName = "needlehack-post"
 
@@ -23,13 +22,13 @@ open class MessagingRabbitmqConfiguration {
     }
 
     @Bean
-    fun exchange(): TopicExchange? {
-        return TopicExchange(topicExchangeName)
+    fun exchange(): DirectExchange? {
+        return DirectExchange(directExchangeName)
     }
 
     @Bean
-    fun binding(queue: Queue?, exchange: TopicExchange?): Binding? {
-        return BindingBuilder.bind(queue).to(exchange).with("needlehack-post.#")
+    fun binding(queue: Queue?, exchange: DirectExchange?): Binding? {
+        return BindingBuilder.bind(queue).to(exchange).with("needlehack-post.routing-key")
     }
 
     @Bean
